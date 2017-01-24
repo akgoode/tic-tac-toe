@@ -8,9 +8,9 @@ const Player = function (name, index) {
   this.name = name;
   this.playerNumber = index;
   if (index === 1) {
-    this.piece = "X";
+    this.piece = 'X';
   } else {
-    this.piece = "O";
+    this.piece = 'O';
   }
 };
 
@@ -18,41 +18,47 @@ const Player = function (name, index) {
 
 const Board = function (player1, player2) {
   this.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
   //this.spaces = ["[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]"];
+
   // this.spaces = ["_", "_", "_", "_", "_", "_", "_", "_", "_", ];
+
   this.players = [player1, player2];
   this.turn = 1;
 };
 
-Board.prototype.createBoard = function(board) {
+Board.prototype.createBoard = function (board) {
   for (let i = 0; i < this.spaces.length; i++) {
-	let newSpace = document.createElement('div');
-	newSpace.className = 'space';
-  newSpace.setAttribute("id", i);
-	newSpace.addEventListener('click', this.makeMove);
-  newSpace.appendChild(document.createElement('h1'));
-	board.appendChild(newSpace);
+    let newSpace = document.createElement('div');
+    newSpace.className = 'space';
+    newSpace.setAttribute('id', i);
+    newSpace.addEventListener('click', this.makeMove);
+    newSpace.appendChild(document.createElement('h1'));
+    board.appendChild(newSpace);
   }
 };
-
 
 // Attempts to place a game piece in a designated spot on the board
 
 Board.prototype.makeMove = function (player, move) {
-  console.log("Player " + player.playerNumber + " made move " + move);
+  console.log('Player ' + player.playerNumber + ' made move ' + move);
   if (this.isValidMove(move)) {
+
     //this.spaces[move] = player.piece;
-    if(this.turn % 2 === 1) {
+
+    if (this.turn % 2 === 1) {
       this.spaces[move] = 'X';
     } else {
       this.spaces[move] = 'O';
     }
+
     this.paintBoard(player);
     if (this.win(player)) {
-      console.log("Player " + player.playerNumber + " wins!");
+      console.log('Player ' + player.playerNumber + ' wins!');
     }
+
   } else {
-    console.log("That is not a valid move!");
+    console.log('That is not a valid move!');
   }
 };
 
@@ -70,6 +76,7 @@ Board.prototype.isValidMove = function (move) {
   if (this.spaces[move] !== move) {
     return false;
   }
+
   return true;
 };
 
@@ -79,21 +86,27 @@ Board.prototype.win = function (player) {
   return this.isHorizontalWin(player) || this.isVerticalWin(player) || this.isDiagonalWin(player);
 };
 
-Board.prototype.isHorizontalWin = function(player) {
-  return (this.spaces[0] === player.piece && this.spaces[1] === player.piece && this.spaces[2] === player.piece) ||
-  (this.spaces[3] === player.piece && this.spaces[4] === player.piece && this.spaces[5] === player.piece) ||
-  (this.spaces[6] === player.piece && this.spaces[7] === player.piece && this.spaces[8] === player.piece);
+Board.prototype.isHorizontalWin = function (player) {
+  let piece = player.piece;
+  let win1 = this.spaces[0] === piece && this.spaces[1] === piece && this.spaces[2] === piece;
+  let win2 = this.spaces[3] === piece && this.spaces[4] === piece && this.spaces[5] === piece;
+  let win3 = this.spaces[6] === piece && this.spaces[7] === piece && this.spaces[8] === piece;
+  return win1 || win2 || win3;
 };
 
-Board.prototype.isVerticalWin = function(player) {
-  return (this.spaces[0] === player.piece && this.spaces[3] === player.piece && this.spaces[6] === player.piece) ||
-  (this.spaces[1] === player.piece && this.spaces[4] === player.piece && this.spaces[7] === player.piece) ||
-  (this.spaces[2] === player.piece && this.spaces[5] === player.piece && this.spaces[8] === player.piece);
+Board.prototype.isVerticalWin = function (player) {
+  let piece = player.piece;
+  let win1 = this.spaces[0] === piece && this.spaces[3] === piece && this.spaces[6] === piece;
+  let win2 = this.spaces[1] === piece && this.spaces[4] === piece && this.spaces[7] === piece;
+  let win3 = this.spaces[2] === piece && this.spaces[5] === piece && this.spaces[8] === piece;
+  return win1 || win2 || win3;
 };
 
 Board.prototype.isDiagonalWin = function (player) {
-  return (this.spaces[0] === player.piece && this.spaces[4] === player.piece && this.spaces[8] === player.piece) ||
-  (this.spaces[6] === player.piece && this.spaces[4] === player.piece && this.spaces[2] === player.piece);
+  let piece = player.piece;
+  let win1 = this.spaces[0] === piece && this.spaces[4] === piece && this.spaces[8] === piece;
+  let win2 = this.spaces[6] === piece && this.spaces[4] === piece && this.spaces[2] === piece;
+  return win1 || win2;
 };
 
 // Prints out a board to the console
@@ -104,15 +117,12 @@ Board.prototype.printBoard = function () {
   }
 };
 
-
-
 // testing code below
 
-const player1 = new Player("Andy", 1);
-const player2 = new Player("Betsy", 2);
+const player1 = new Player('Andy', 1);
+const player2 = new Player('Betsy', 2);
 const board1 = new Board(player1, player2);
 board1.createBoard(board);
-
 
 // Horizontal win test
 
