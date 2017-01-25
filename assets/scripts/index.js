@@ -3,6 +3,7 @@
 const setAPIOrigin = require('../../lib/set-api-origin');
 const config = require('./config');
 const events = require('./auth/events.js');
+const boardInit = require('./board.js');
 
 $(() => {
   setAPIOrigin(location, config);
@@ -17,4 +18,5 @@ require('./example');
 $(() => {
   // TODO add handlers
   events.addHandlers();
+  boardInit();
 });

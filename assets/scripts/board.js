@@ -1,8 +1,6 @@
 'use strict';
 
-let board = document.getElementById('gameboard');
-
-// constructor:  Takes array of players and creates an empty game board.
+// constructor:  Creates an empty game board.
 
 const Board = function () {
   this.spaces = [];
@@ -12,6 +10,12 @@ const Board = function () {
   // this.spaces = ["_", "_", "_", "_", "_", "_", "_", "_", "_", ];
 
   this.turn = 0;
+};
+
+const boardInit = function () {
+  let board = document.getElementById('gameboard');
+  const board1 = new Board();
+  board1.createBoard(board);
 };
 
 Board.prototype.nextPiece = function () {
@@ -41,10 +45,9 @@ Board.prototype.clearBoard = function () {
 // Attempts to place a game piece in a designated spot on the board
 
 Board.prototype.makeMove = function (move) {
-  this.turn++;
-  console.log('Player ' + this.nextPiece() + ' made move ' + move);
-
   if (this.isValidMove(move)) {
+    this.turn++;
+    console.log('Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard();
     if (this.win()) {
@@ -114,8 +117,7 @@ Board.prototype.printBoard = function () {
 
 // testing code below
 
-const board1 = new Board();
-board1.createBoard(board);
+
 
 // Horizontal win test
 
@@ -159,4 +161,4 @@ board1.createBoard(board);
 // board1.makeMove(6);
 // board1.printBoard();
 
-// module.exports = Board;
+module.exports = boardInit;
