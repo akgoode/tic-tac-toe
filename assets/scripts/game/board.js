@@ -12,8 +12,6 @@ const Board = function () {
   this.turn = 0;
 };
 
-
-
 Board.prototype.nextPiece = function () {
   if (this.turn % 2 === 1) {
     return 'X';
@@ -42,10 +40,9 @@ Board.prototype.clearBoard = function () {
 const makeMove = function (event) {
   event.preventDefault();
   let move = parseInt(event.target.id);
-  // paintBoard();
   if (this.isValidMove(move)) {
     this.turn++;
-    console.log('Turn '+ this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
+    console.log('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
     if (this.win()) {
@@ -60,8 +57,6 @@ const makeMove = function (event) {
     console.log('That is not a valid move!');
   }
 };
-
-
 
 // Checks to see if a move is valid
 // A valid move will be in a spot that doesn't already have an X or an O
@@ -124,10 +119,10 @@ const createBoard = function (board1, gameboard) {
 
 function boardInit() {
   // let board = document.getElementById('gameboard');
-  let board = $('#gameboard');
+  let $board = $('#gameboard');
   const board1 = new Board();
 
-  createBoard(board1, board);
+  createBoard(board1, $board);
 }
 
 // testing code below
