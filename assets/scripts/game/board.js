@@ -50,6 +50,7 @@ const makeMove = function (event) {
     this.paintBoard(move);
     if (this.win()) {
       console.log('Player ' + this.nextPiece() + ' wins!');
+      this.spaces = [];
 
     } else if (this.turn === 9) {
       console.log('The game is a tie!');
