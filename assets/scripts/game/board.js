@@ -12,12 +12,7 @@ const Board = function () {
   this.turn = 0;
 };
 
-function boardInit() {
-  // let board = document.getElementById('gameboard');
-  let board = document.getElementById("gameboard");
-  const board1 = new Board();
-  board1.createBoard(board);
-}
+
 
 Board.prototype.nextPiece = function () {
   if (this.turn % 2 === 1) {
@@ -27,33 +22,35 @@ Board.prototype.nextPiece = function () {
   }
 };
 
-Board.prototype.createBoard = function (gameboard) {
-  this.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  for (let i = 0; i < this.spaces.length; i++) {
-    let newSpace = document.createElement('div');
-    newSpace.className = 'space';
-    newSpace.setAttribute('id', i);
-    newSpace.addEventListener('click', this.makeMove);
-    newSpace.appendChild(document.createElement('h1'));
-    gameboard.appendChild(newSpace);
-  }
+Board.prototype.getSpace = function (index) {
+  return this.spaces[index];
+};
+
+Board.prototype.paintBoard = function (move) {
+  $('#text' + move).text(this.nextPiece());
 };
 
 Board.prototype.clearBoard = function () {
-
+  this.spaces = [];
+  for (let i = 0; i < this.spaces.length; i++) {
+    $('#text' + i).text('');
+  }
 };
 
 // Attempts to place a game piece in a designated spot on the board
 
-Board.prototype.makeMove = function (event) {
-  let move = event.target.id;
+const makeMove = function (event) {
+  event.preventDefault();
+  let move = parseInt(event.target.id);
+  // paintBoard();
   if (this.isValidMove(move)) {
     this.turn++;
-    console.log('Player ' + this.nextPiece() + ' made move ' + move);
+    console.log('Turn '+ this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
-    this.paintBoard();
+    this.paintBoard(move);
     if (this.win()) {
       console.log('Player ' + this.nextPiece() + ' wins!');
+      this.spaces = [];
 
     } else if (this.turn === 9) {
       console.log('The game is a tie!');
@@ -64,18 +61,14 @@ Board.prototype.makeMove = function (event) {
   }
 };
 
-Board.prototype.paintBoard = function () {
-  for (let i = 0; i < this.spaces.length; i++) {
-    document.getElementById(i + '').text = this.spaces[i] + '';
-  }
-};
+
 
 // Checks to see if a move is valid
 // A valid move will be in a spot that doesn't already have an X or an O
 // An invalid move will be in a spot that already has an X or an O
 
 Board.prototype.isValidMove = function (move) {
-  if (this.spaces[move] !== move) {
+  if (this.getSpace(move) !== move) {
     return false;
   }
 
@@ -116,6 +109,26 @@ Board.prototype.printBoard = function () {
     console.log(this.spaces[i + 0] + ' ' + this.spaces[i + 1] + ' ' + this.spaces[i + 2]);
   }
 };
+
+const createBoard = function (board1, gameboard) {
+  board1.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  for (let i = 0; i < board1.spaces.length; i++) {
+    gameboard.append('<div class="space" id="' + i + '"></div>');
+    $('#' + i).append('<h1 id="text' + i + '"></h1>');
+    console.log(board1);
+    const bindMakeMove = makeMove.bind(board1);
+    $('#' + i).on('click', bindMakeMove);
+    console.log(board1);
+  }
+};
+
+function boardInit() {
+  // let board = document.getElementById('gameboard');
+  let board = $('#gameboard');
+  const board1 = new Board();
+
+  createBoard(board1, board);
+}
 
 // testing code below
 
