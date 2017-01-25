@@ -2,59 +2,56 @@
 
 let board = document.getElementById('gameboard');
 
-//let Player = require('./player.js');
-
-const Player = function (name, index) {
-  this.name = name;
-  this.playerNumber = index;
-  if (index === 1) {
-    this.piece = 'X';
-  } else {
-    this.piece = 'O';
-  }
-};
-
 // constructor:  Takes array of players and creates an empty game board.
 
-const Board = function (player1, player2) {
-  this.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+const Board = function () {
+  this.spaces = [];
 
   //this.spaces = ["[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]"];
 
   // this.spaces = ["_", "_", "_", "_", "_", "_", "_", "_", "_", ];
 
-  this.players = [player1, player2];
-  this.turn = 1;
+  this.turn = 0;
 };
 
-Board.prototype.createBoard = function (board) {
+Board.prototype.nextPiece = function () {
+  if (this.turn % 2 === 1) {
+    return 'X';
+  } else {
+    return 'O';
+  }
+};
+
+Board.prototype.createBoard = function (gameboard) {
+  this.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   for (let i = 0; i < this.spaces.length; i++) {
     let newSpace = document.createElement('div');
     newSpace.className = 'space';
     newSpace.setAttribute('id', i);
     newSpace.addEventListener('click', this.makeMove);
     newSpace.appendChild(document.createElement('h1'));
-    board.appendChild(newSpace);
+    gameboard.appendChild(newSpace);
   }
+};
+
+Board.prototype.clearBoard = function () {
+
 };
 
 // Attempts to place a game piece in a designated spot on the board
 
-Board.prototype.makeMove = function (player, move) {
-  console.log('Player ' + player.playerNumber + ' made move ' + move);
+Board.prototype.makeMove = function (move) {
+  this.turn++;
+  console.log('Player ' + this.nextPiece() + ' made move ' + move);
+
   if (this.isValidMove(move)) {
+    this.spaces[move] = this.nextPiece();
+    this.paintBoard();
+    if (this.win()) {
+      console.log('Player ' + this.nextPiece() + ' wins!');
 
-    //this.spaces[move] = player.piece;
-
-    if (this.turn % 2 === 1) {
-      this.spaces[move] = 'X';
-    } else {
-      this.spaces[move] = 'O';
-    }
-
-    this.paintBoard(player);
-    if (this.win(player)) {
-      console.log('Player ' + player.playerNumber + ' wins!');
+    } else if (this.turn === 9) {
+      console.log('The game is a tie!');
     }
 
   } else {
@@ -62,9 +59,9 @@ Board.prototype.makeMove = function (player, move) {
   }
 };
 
-Board.prototype.paintBoard = function (player) {
+Board.prototype.paintBoard = function () {
   for (let i = 0; i < this.spaces.length; i++) {
-    document.getElementById(i + '').text = player.piece;
+    document.getElementById(i + '').text = this.spaces[i] + '';
   }
 };
 
@@ -82,28 +79,26 @@ Board.prototype.isValidMove = function (move) {
 
 // Checks to see if the board is in a winning state
 
-Board.prototype.win = function (player) {
-  return this.isHorizontalWin(player) || this.isVerticalWin(player) || this.isDiagonalWin(player);
+Board.prototype.win = function () {
+  let piece = this.nextPiece();
+  return this.isHorizontalWin(piece) || this.isVerticalWin(piece) || this.isDiagonalWin(piece);
 };
 
-Board.prototype.isHorizontalWin = function (player) {
-  let piece = player.piece;
+Board.prototype.isHorizontalWin = function (piece) {
   let win1 = this.spaces[0] === piece && this.spaces[1] === piece && this.spaces[2] === piece;
   let win2 = this.spaces[3] === piece && this.spaces[4] === piece && this.spaces[5] === piece;
   let win3 = this.spaces[6] === piece && this.spaces[7] === piece && this.spaces[8] === piece;
   return win1 || win2 || win3;
 };
 
-Board.prototype.isVerticalWin = function (player) {
-  let piece = player.piece;
+Board.prototype.isVerticalWin = function (piece) {
   let win1 = this.spaces[0] === piece && this.spaces[3] === piece && this.spaces[6] === piece;
   let win2 = this.spaces[1] === piece && this.spaces[4] === piece && this.spaces[7] === piece;
   let win3 = this.spaces[2] === piece && this.spaces[5] === piece && this.spaces[8] === piece;
   return win1 || win2 || win3;
 };
 
-Board.prototype.isDiagonalWin = function (player) {
-  let piece = player.piece;
+Board.prototype.isDiagonalWin = function (piece) {
   let win1 = this.spaces[0] === piece && this.spaces[4] === piece && this.spaces[8] === piece;
   let win2 = this.spaces[6] === piece && this.spaces[4] === piece && this.spaces[2] === piece;
   return win1 || win2;
@@ -119,53 +114,49 @@ Board.prototype.printBoard = function () {
 
 // testing code below
 
-const player1 = new Player('Andy', 1);
-const player2 = new Player('Betsy', 2);
-const board1 = new Board(player1, player2);
+const board1 = new Board();
 board1.createBoard(board);
 
 // Horizontal win test
 
 // board1.printBoard();
-// board1.makeMove(player1, 4);
+// board1.makeMove(4);
 // board1.printBoard();
-// board1.makeMove(player2, 7);
+// board1.makeMove(7);
 // board1.printBoard();
-// board1.makeMove(player1, 3);
+// board1.makeMove(3);
 // board1.printBoard();
-// board1.makeMove(player2, 6);
+// board1.makeMove(6);
 // board1.printBoard();
-// board1.makeMove(player1, 5);
+// board1.makeMove(5);
 
 // Vertical win test
 
 // board1.printBoard();
-// board1.makeMove(player1, 4);
+// board1.makeMove(4);
 // board1.printBoard();
-// board1.makeMove(player2, 6);
+// board1.makeMove(6);
 // board1.printBoard();
-// board1.makeMove(player1, 2);
+// board1.makeMove(2);
 // board1.printBoard();
-// board1.makeMove(player2, 3);
+// board1.makeMove(3);
 // board1.printBoard();
-// board1.makeMove(player1, 1);
+// board1.makeMove(1);
 // board1.printBoard();
-// board1.makeMove(player2, 0);
+// board1.makeMove(0);
 
 // Diagonal Win Test
 
-board1.printBoard();
-board1.makeMove(player1, 4);
-board1.printBoard();
-board1.makeMove(player2, 7);
-board1.printBoard();
-board1.makeMove(player1, 2);
-board1.printBoard();
-board1.makeMove(player2, 8);
-board1.printBoard();
-board1.makeMove(player1, 6);
-board1.printBoard();
+// board1.printBoard();
+// board1.makeMove(4);
+// board1.printBoard();
+// board1.makeMove(7);
+// board1.printBoard();
+// board1.makeMove(2);
+// board1.printBoard();
+// board1.makeMove(8);
+// board1.printBoard();
+// board1.makeMove(6);
+// board1.printBoard();
 
-module.exports = {
-  Board,
-};
+// module.exports = Board;
