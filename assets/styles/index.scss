@@ -2,39 +2,47 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import './style.css';
 
-// $black: #000;
-//
-// header {
-//   border: 2px solid $black;
-//   height: 100px;
-//   text-align: center;
-//   width: 100%;
-// }
-//
-// div {
-//   float: left;
-// }
-//
-// .sidebar {
-//   border: 2px solid $black;
-//   height: 1000px;
-//   width: 20%;
-// }
-//
-// .board {
-//   border: 2px solid $black;
-//   height: 525px;
-//   margin: 50px;
-//   width: 525px;
-// }
-//
-// .space {
-//   border: 2px solid $black;
-//   float: left;
-//   font-size: 30;
-//   height: 160px;
-//   left: 0;
-//   margin: 5px;
-//   position: static;
-//   width: 160px;
-// }
+$background-color: #4e4e4e;
+$font-color: #dfdfdf;
+$white: #fff;
+$modal-font-color: #000;
+$black: #000;
+
+.modal {
+  color: $modal-font-color;
+}
+
+header {
+  border: 2px solid $black;
+  height: 100px;
+  text-align: center;
+  width: 100%;
+}
+
+div {
+  float: left;
+}
+
+.sidebar {
+  border: 2px solid $black;
+  height: 1000px;
+  width: 20%;
+}
+
+.board {
+  border: 2px solid $black;
+  height: 525px;
+  margin: 50px;
+  width: 525px;
+}
+
+.space {
+  border: 2px solid $black;
+  float: left;
+  font-size: 30;
+  height: 160px;
+  left: 0;
+  margin: 5px;
+  position: static;
+  width: 160px;
+}

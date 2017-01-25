@@ -154,17 +154,17 @@ board1.createBoard(board);
 
 // Diagonal Win Test
 
-board1.printBoard();
-board1.makeMove(player1, 4);
-board1.printBoard();
-board1.makeMove(player2, 7);
-board1.printBoard();
-board1.makeMove(player1, 2);
-board1.printBoard();
-board1.makeMove(player2, 8);
-board1.printBoard();
-board1.makeMove(player1, 6);
-board1.printBoard();
+// board1.printBoard();
+// board1.makeMove(player1, 4);
+// board1.printBoard();
+// board1.makeMove(player2, 7);
+// board1.printBoard();
+// board1.makeMove(player1, 2);
+// board1.printBoard();
+// board1.makeMove(player2, 8);
+// board1.printBoard();
+// board1.makeMove(player1, 6);
+// board1.printBoard();
 
 module.exports = {
   Board,
