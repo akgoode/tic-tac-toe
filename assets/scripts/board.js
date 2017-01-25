@@ -12,11 +12,11 @@ const Board = function () {
   this.turn = 0;
 };
 
-const boardInit = function () {
+function boardInit() {
   let board = document.getElementById('gameboard');
   const board1 = new Board();
   board1.createBoard(board);
-};
+}
 
 Board.prototype.nextPiece = function () {
   if (this.turn % 2 === 1) {
@@ -117,8 +117,6 @@ Board.prototype.printBoard = function () {
 
 // testing code below
 
-
-
 // Horizontal win test
 
 // board1.printBoard();
@@ -161,4 +159,7 @@ Board.prototype.printBoard = function () {
 // board1.makeMove(6);
 // board1.printBoard();
 
-module.exports = boardInit;
+module.exports = {
+  Board,
+  boardInit,
+};
