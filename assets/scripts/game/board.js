@@ -13,7 +13,8 @@ const Board = function () {
 };
 
 function boardInit() {
-  let board = document.getElementById('gameboard');
+  // let board = document.getElementById('gameboard');
+  let board = document.getElementById("gameboard");
   const board1 = new Board();
   board1.createBoard(board);
 }
@@ -44,7 +45,8 @@ Board.prototype.clearBoard = function () {
 
 // Attempts to place a game piece in a designated spot on the board
 
-Board.prototype.makeMove = function (move) {
+Board.prototype.makeMove = function (event) {
+  let move = event.target.id;
   if (this.isValidMove(move)) {
     this.turn++;
     console.log('Player ' + this.nextPiece() + ' made move ' + move);
@@ -160,6 +162,5 @@ Board.prototype.printBoard = function () {
 // board1.printBoard();
 
 module.exports = {
-  Board,
   boardInit,
 };
