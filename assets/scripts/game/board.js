@@ -1,7 +1,7 @@
 'use strict';
 
-const store = require('../store.js');
 const gameStore = require('../gameStore.js');
+const gameAPI = require('../gameAPI/api.js');
 
 // constructor:  Creates a board from the string passed in by the server
 
@@ -37,12 +37,7 @@ Board.prototype.paintBoard = function (move) {
 };
 
 const clearBoard = function () {
-  let gameboard = $('#gameboard');
-  this.spaces = [];
-  this.turn = 0;
   $('.space').remove();
-  createBoard(this, gameboard);
-  $('#newgame').addClass("hide");
   $('#statusbar').text("");
 };
 
@@ -56,6 +51,7 @@ const makeMove = function (event) {
     $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
+    gameAPI.update(move, this);
     if (this.win()) {
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       $('#newgame').removeClass("hide");
@@ -135,6 +131,15 @@ function boardInit() {
   createBoard(board1, $board);
 }
 
+function openGame(board) {
+  clearBoard();
+  let $board = $('#gameboard');
+  createBoard(board, $board);
+  for (let i = 0; i < board.spaces.length; i++) {
+    $('#text' + i).text(board.spaces[i]);
+  }
+}
+
 function endGame() {
   $('.space').remove();
 }
@@ -142,4 +147,5 @@ function endGame() {
 module.exports = {
   boardInit,
   endGame,
+  openGame,
 };

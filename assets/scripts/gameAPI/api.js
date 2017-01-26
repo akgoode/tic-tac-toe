@@ -33,12 +33,21 @@ const createGame = function () {
   });
 };
 
-const update = function (id) {
+const update = function (move, board) {
   return $.ajax({
-    url: config.apiOrigin + '/games/' + id,
+    url: config.apiOrigin + '/games/' + board.id,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
+    },
+    data: {
+      "game": {
+        "cell": {
+          "index": move,
+          "value": board.nextPiece(),
+        },
+        "over": board.over,
+      }
     },
   });
 };
