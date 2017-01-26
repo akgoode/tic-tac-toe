@@ -2,11 +2,12 @@
 
 // constructor:  Creates an empty game board.
 
-const Board = function (player_x) {
+const Board = function (player_x, player_o) {
   //this.id = id;
   this.spaces = [];
   this.turn = 0;
   this.player_x = player_x;
+  this.player_0 = player_o || null;
   this.over = false;
 };
 
