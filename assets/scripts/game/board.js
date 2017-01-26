@@ -23,11 +23,14 @@ Board.prototype.paintBoard = function (move) {
   $('#text' + move).text(this.nextPiece());
 };
 
-Board.prototype.clearBoard = function () {
+const clearBoard = function () {
+  let gameboard = $('#gameboard');
   this.spaces = [];
-  for (let i = 0; i < this.spaces.length; i++) {
-    $('#text' + i).text('');
-  }
+  this.turn = 0;
+  $('.space').remove();
+  createBoard(this, gameboard);
+  $('#newgame').addClass("hide");
+  $('#statusbar').text("");
 };
 
 // Attempts to place a game piece in a designated spot on the board
@@ -114,6 +117,8 @@ const createBoard = function (board1, gameboard) {
     $('#' + i).on('click', bindMakeMove);
     console.log(board1);
   }
+  const bindClearBoard = clearBoard.bind(board1);
+  $('#newgame').on('click', bindClearBoard);
 };
 
 function boardInit() {
