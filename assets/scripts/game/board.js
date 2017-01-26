@@ -2,9 +2,12 @@
 
 // constructor:  Creates an empty game board.
 
-const Board = function () {
+const Board = function (player_x) {
+  //this.id = id;
   this.spaces = [];
   this.turn = 0;
+  this.player_x = player_x;
+  this.over = false;
 };
 
 Board.prototype.nextPiece = function () {
@@ -39,6 +42,7 @@ const makeMove = function (event) {
   event.preventDefault();
   let move = parseInt(event.target.id);
   if (this.isValidMove(move)) {
+    console.log(this);
     this.turn++;
     $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     console.log('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
@@ -47,11 +51,13 @@ const makeMove = function (event) {
     if (this.win()) {
       console.log('Player ' + this.nextPiece() + ' wins!');
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
-      this.spaces = [];
       $('#newgame').removeClass("hide");
+      console.log(this);
+      this.over = true;
     } else if (this.turn === 9) {
       console.log('The game is a tie!');
       $('#statusbar').text('The game is a tie!');
+      this.over = true;
     }
 
   } else {
@@ -112,18 +118,16 @@ const createBoard = function (board1, gameboard) {
   for (let i = 0; i < board1.spaces.length; i++) {
     gameboard.append('<div class="space" id="' + i + '"></div>');
     $('#' + i).append('<h1 id="text' + i + '"></h1>');
-    console.log(board1);
     const bindMakeMove = makeMove.bind(board1);
     $('#' + i).on('click', bindMakeMove);
-    console.log(board1);
   }
   const bindClearBoard = clearBoard.bind(board1);
   $('#newgame').on('click', bindClearBoard);
 };
 
-function boardInit() {
+function boardInit(player) {
   let $board = $('#gameboard');
-  const board1 = new Board();
+  const board1 = new Board(player);
 
   createBoard(board1, $board);
 }
