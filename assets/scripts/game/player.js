@@ -7,6 +7,7 @@ const Player = function () {
   console.log(this);
   this.id = userInfo.id;
   this.email = userInfo.email;
+  this.games = userInfo.games;
 };
 
 Player.prototype.createBoard = function(gameId) {
@@ -19,7 +20,7 @@ Player.prototype.displayUser = function() {
 
 const playerInit = function () {
   const player1 = new Player();
-  board.boardInit(player1);
+  board.boardInit();
 };
 
 module.exports = {

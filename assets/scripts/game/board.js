@@ -1,21 +1,30 @@
 'use strict';
 
-// constructor:  Creates an empty game board.
+const store = require('../store.js');
+const gameStore = require('../gameStore.js');
 
-const Board = function (player_x, player_o) {
-  //this.id = id;
-  this.spaces = [];
+// constructor:  Creates a board from the string passed in by the server
+
+const Board = function (board) {
+  console.log(board);
+  this.id = board.id;
+  this.spaces = board.cells;
   this.turn = 0;
-  this.player_x = player_x;
-  this.player_0 = player_o || null;
-  this.over = false;
+  for(let i = 0; i < this.spaces.length; i++) {
+    if(this.spaces[i] === 'x' || this.spaces[i] === 'o') {
+      this.turn++;
+    }
+  }
+  this.player_x = board.player_x;
+  this.player_0 = board.player_o || null;
+  this.over = board.over;
 };
 
 Board.prototype.nextPiece = function () {
   if (this.turn % 2 === 1) {
-    return 'X';
+    return 'x';
   } else {
-    return 'O';
+    return 'o';
   }
 };
 
@@ -66,7 +75,7 @@ const makeMove = function (event) {
 // An invalid move will be in a spot that already has an X or an O
 
 Board.prototype.isValidMove = function (move) {
-  if (this.getSpace(move) !== move) {
+  if (this.getSpace(move) !== "") {
     return false;
   }
 
@@ -109,7 +118,6 @@ Board.prototype.printBoard = function () {
 };
 
 const createBoard = function (board1, gameboard) {
-  board1.spaces = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   for (let i = 0; i < board1.spaces.length; i++) {
     gameboard.append('<div class="space" id="' + i + '"></div>');
     $('#' + i).append('<h1 id="text' + i + '"></h1>');
@@ -120,9 +128,9 @@ const createBoard = function (board1, gameboard) {
   $('#newgame').on('click', bindClearBoard);
 };
 
-function boardInit(player) {
+function boardInit() {
   let $board = $('#gameboard');
-  const board1 = new Board(player);
+  const board1 = new Board(gameStore.game);
 
   createBoard(board1, $board);
 }

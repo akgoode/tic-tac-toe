@@ -12,7 +12,7 @@ const signInSuccess = (data) => {
   $('#userChangePassword').removeClass("hide");
   $('#userSignOut').removeClass("hide");
   $('#statusbar').text('Begin New Game!');
-  player.playerInit();
+  //player.playerInit();
   $('.signInForm').val('');
 };
 
