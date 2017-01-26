@@ -20,6 +20,11 @@ header {
 
 div {
   float: left;
+
+  h1 {
+    font-size: 6em;
+    text-align: center;
+  }
 }
 
 .sidebar {
@@ -30,9 +35,9 @@ div {
 
 .board {
   border: 2px solid $black;
-  height: 525px;
+  height: 518px;
   margin: 50px;
-  width: 525px;
+  width: 518px;
 }
 
 .space {
@@ -44,4 +49,11 @@ div {
   margin: 5px;
   position: static;
   width: 160px;
+}
+
+.status {
+  border: 1px solid $black;
+  height: 40px;
+  margin: 20px;
+  width: 518px;
 }

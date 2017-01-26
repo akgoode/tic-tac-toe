@@ -4,11 +4,6 @@
 
 const Board = function () {
   this.spaces = [];
-
-  //this.spaces = ["[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]", "[]"];
-
-  // this.spaces = ["_", "_", "_", "_", "_", "_", "_", "_", "_", ];
-
   this.turn = 0;
 };
 
@@ -118,56 +113,11 @@ const createBoard = function (board1, gameboard) {
 };
 
 function boardInit() {
-  // let board = document.getElementById('gameboard');
   let $board = $('#gameboard');
   const board1 = new Board();
 
   createBoard(board1, $board);
 }
-
-// testing code below
-
-// Horizontal win test
-
-// board1.printBoard();
-// board1.makeMove(4);
-// board1.printBoard();
-// board1.makeMove(7);
-// board1.printBoard();
-// board1.makeMove(3);
-// board1.printBoard();
-// board1.makeMove(6);
-// board1.printBoard();
-// board1.makeMove(5);
-
-// Vertical win test
-
-// board1.printBoard();
-// board1.makeMove(4);
-// board1.printBoard();
-// board1.makeMove(6);
-// board1.printBoard();
-// board1.makeMove(2);
-// board1.printBoard();
-// board1.makeMove(3);
-// board1.printBoard();
-// board1.makeMove(1);
-// board1.printBoard();
-// board1.makeMove(0);
-
-// Diagonal Win Test
-
-// board1.printBoard();
-// board1.makeMove(4);
-// board1.printBoard();
-// board1.makeMove(7);
-// board1.printBoard();
-// board1.makeMove(2);
-// board1.printBoard();
-// board1.makeMove(8);
-// board1.printBoard();
-// board1.makeMove(6);
-// board1.printBoard();
 
 module.exports = {
   boardInit,
