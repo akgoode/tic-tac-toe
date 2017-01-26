@@ -45,7 +45,7 @@ const makeMove = function (event) {
       console.log('Player ' + this.nextPiece() + ' wins!');
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       this.spaces = [];
-
+      $('#newgame').removeClass("hide");
     } else if (this.turn === 9) {
       console.log('The game is a tie!');
       $('#statusbar').text('The game is a tie!');
