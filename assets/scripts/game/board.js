@@ -37,19 +37,23 @@ const makeMove = function (event) {
   let move = parseInt(event.target.id);
   if (this.isValidMove(move)) {
     this.turn++;
+    $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     console.log('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
     if (this.win()) {
       console.log('Player ' + this.nextPiece() + ' wins!');
+      $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       this.spaces = [];
 
     } else if (this.turn === 9) {
       console.log('The game is a tie!');
+      $('#statusbar').text('The game is a tie!');
     }
 
   } else {
     console.log('That is not a valid move!');
+    $('#statusbar').text('That is not a valid move!');
   }
 };
 
