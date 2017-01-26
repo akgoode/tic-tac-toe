@@ -126,6 +126,11 @@ function boardInit(player) {
   createBoard(board1, $board);
 }
 
+function endGame() {
+  $('.space').remove();
+}
+
 module.exports = {
   boardInit,
+  endGame,
 };

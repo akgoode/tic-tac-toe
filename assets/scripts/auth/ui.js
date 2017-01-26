@@ -1,6 +1,7 @@
 'use strict';
 
 const player = require('../game/player.js');
+const board = require('../game/board.js');
 
 const signInSuccess = (data) => {
   if (data) {
@@ -12,21 +13,26 @@ const signInSuccess = (data) => {
   $('#userSignOut').removeClass("hide");
   $('#statusbar').text('Begin New Game!');
   player.playerInit();
+  $('.signInForm').val('');
 };
 
 const signUpSuccess = () => {
-  $('#signUpSubmit').hide();
   $('#statusbar').text('Please Sign in!');
+  $('.signUpForm').val('');
 };
 
 const changePasswordSuccess = () => {
   $('#statusbar').text('Password successfully changed!');
+  $('.changePasswordForm').val('');
 };
 
 const signOutSuccess = () => {
   $('#userSignIn').show();
   $('#userChangePassword').hide();
+  $('#userSignOut').hide();
   $('#statusbar').text('Successfully logged out!');
+  $('#signInSubmit').show();
+  board.endGame();
 
 };
 
