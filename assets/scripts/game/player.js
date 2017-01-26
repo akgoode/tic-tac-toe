@@ -4,8 +4,9 @@ const board = require('./board.js');
 const userInfo = require('../store.js');
 
 const Player = function () {
-  this.id = userInfo.user.id;
-  this.email = userInfo.user.email;
+  console.log(this);
+  this.id = userInfo.id;
+  this.email = userInfo.email;
 };
 
 Player.prototype.createBoard = function(gameId) {

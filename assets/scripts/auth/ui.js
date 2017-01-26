@@ -1,7 +1,13 @@
 'use strict';
 
-const success = (data) => {
-  if (data) {console.log(data);}
+const signInSuccess = (data) => {
+  if (data) {
+    console.log(data);
+  }
+  $('#signInSubmit').hide();
+  $('#userSignIn').hide();
+  $('#userChangePassword').removeClass("hide");
+  $('#userSignOut').removeClass("hide");
 };
 
 const failure = (error) => {
@@ -10,5 +16,5 @@ const failure = (error) => {
 
 module.exports = {
   failure,
-  success,
+  signInSuccess,
 };

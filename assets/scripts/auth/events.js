@@ -5,7 +5,7 @@ const getFormFields = require(`../../../lib/get-form-fields`);
 const api = require('./api');
 const ui = require('./ui');
 const store = require('../store');
-const player = require('./game/player.js');
+const player = require('../game/player.js');
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -24,13 +24,13 @@ const onSignIn = function (event) {
       store.user = response.user;
       return store.user;
     })
-    .then(ui.success)
+    .then(ui.signInSuccess)
     .then(() => {
       console.log(store);
     })
     .catch(ui.failure)
     ;
-  const player1 = new Player();
+  player.playerInit();
 };
 
 const onChangePassword = function (event) {

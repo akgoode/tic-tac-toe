@@ -42,26 +42,20 @@ const makeMove = function (event) {
   event.preventDefault();
   let move = parseInt(event.target.id);
   if (this.isValidMove(move)) {
-    console.log(this);
     this.turn++;
     $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
-    console.log('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
     if (this.win()) {
-      console.log('Player ' + this.nextPiece() + ' wins!');
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       $('#newgame').removeClass("hide");
-      console.log(this);
       this.over = true;
     } else if (this.turn === 9) {
-      console.log('The game is a tie!');
       $('#statusbar').text('The game is a tie!');
       this.over = true;
     }
 
   } else {
-    console.log('That is not a valid move!');
     $('#statusbar').text('That is not a valid move!');
   }
 };
