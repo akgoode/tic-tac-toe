@@ -5,13 +5,12 @@ const getFormFields = require(`../../../lib/get-form-fields`);
 const api = require('./api');
 const ui = require('./ui');
 const store = require('../store');
-const player = require('../game/player.js');
 
 const onSignUp = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
-    .then(ui.success)
+    .then(ui.signUpSuccess)
     .catch(ui.failure)
     ;
 };
@@ -30,7 +29,6 @@ const onSignIn = function (event) {
     })
     .catch(ui.failure)
     ;
-  player.playerInit();
 };
 
 const onChangePassword = function (event) {
@@ -49,7 +47,7 @@ const onSignOut = function (event) {
       delete store.user;
       return store;
     })
-    .then(ui.success)
+    .then(ui.signOutSuccess)
     .catch(ui.failure)
     ;
 };
