@@ -7,7 +7,7 @@ http://akgoode.github.io/tic-tac-toe
 
 1/21/17:  Started creating the game logic.  By the end of the day I was able to mimic a game in node by hardcoding in test moves.  The game could tell when there was a winning condition in the game board.  I had horizontal, diagonal, and vertical win cases completed by today.
 
-1/24/17:  Inserted my game into the browser template.  This caused some errors due to a leftover <script> tag in my index.html file.  After deleting this, all errors were resolved and the code worked.  Started building the board via JQuery and adding handlers in a function in board.js.  By the end of the day, I could display the gameboard in the browser.
+1/24/17:  Inserted my game into the browser template.  This caused some errors due to a leftover script tag in my index.html file.  After deleting this, all errors were resolved and the code worked.  Started building the board via JQuery and adding handlers in a function in board.js.  By the end of the day, I could display the gameboard in the browser.
 
 1/25/17:  Ironed out all the bugs with event handlers and linking the makeMove function to the divs on the screen.  By the end of the day I had a working game displayed in the browser, but did not have any server interaction.
 
