@@ -5,8 +5,9 @@ By Andrew Goode
 http://akgoode.github.io/tic-tac-toe
 
 User Experience:
-Upon page load, the user is presented with two options: Sign Up or Sign In.  The game will not work without being signed in so the first visit to the site the user must sign up and then sign in to play the game.  Upon sign-in, the user will have some more options in their control panel.  They can create a game, change their password, sign out, and 
+Upon page load, the user is presented with two options: Sign Up or Sign In.  The game will not work without being signed in so the first visit to the site the user must sign up and then sign in to play the game.  Upon sign-in, the user will have some more options in their control panel.  They can create a game, change their password, sign out, and check how many games they have won, and get the state of any particular game if they know the ID for that game.
 
+When they create a new game, the user's account will be assigned to player_x in the game.  The first move in the game will start with player x, and will alternate for each consecutive turn.  The game will not allow people to click on spaces that already have moves in them, nor will it allow users to continue making moves after the game is complete.
 
 1/21/17:  Started creating the game logic.  By the end of the day I was able to mimic a game in node by hardcoding in test moves.  The game could tell when there was a winning condition in the game board.  I had horizontal, diagonal, and vertical win cases completed by today.
 
