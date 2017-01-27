@@ -51,7 +51,6 @@ const makeMove = function (event) {
     $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
-    gameAPI.update(move, this);
     if (this.win()) {
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       $('#newgame').removeClass("hide");
@@ -60,7 +59,7 @@ const makeMove = function (event) {
       $('#statusbar').text('The game is a tie!');
       this.over = true;
     }
-
+    gameAPI.update(move, this);
   } else {
     $('#statusbar').text('That is not a valid move!');
   }

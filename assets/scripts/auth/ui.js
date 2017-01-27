@@ -27,8 +27,8 @@ const changePasswordSuccess = () => {
 
 const signOutSuccess = () => {
   $('#userSignIn').show();
-  $('#userChangePassword').hide();
-  $('#userSignOut').hide();
+  $('#userChangePassword').addClass("hide");
+  $('#userSignOut').addClass("hide");
   $('#statusbar').text('Successfully logged out!');
   $('#signInSubmit').show();
   board.endGame();
