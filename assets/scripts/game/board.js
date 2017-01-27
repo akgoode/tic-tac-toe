@@ -143,8 +143,30 @@ function endGame() {
   $('.space').remove();
 }
 
+function getUserWins (data) {
+  let games = data.games;
+  let winCount = 0;
+  for (let i = 0; i < games.length; i++) {
+    let game = new Board(games[i]);
+    let numX = 0;
+    let numO = 0;
+    for(let j = 0; j < game.spaces.length; j++) {
+      if(game.spaces[j] === 'x') {
+        numX++;
+      } else if (game.spaces[j] === 'o') {
+        numO++;
+      }
+    }
+    if (game.over && game.win() && numX > numO) {
+      winCount++;
+    }
+  }
+  return winCount;
+}
+
 module.exports = {
   boardInit,
   endGame,
   openGame,
+  getUserWins,
 };

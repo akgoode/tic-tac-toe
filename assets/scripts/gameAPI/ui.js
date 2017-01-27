@@ -14,6 +14,7 @@ const createSuccess = function () {
 
 const showGamesSuccess = function (data) {
   console.table(data);
+  console.log(board.getUserWins(data));
 };
 
 const showGameSuccess = function (data) {
@@ -24,6 +25,7 @@ const showGameSuccess = function (data) {
   $('.player').text(data.game.player_x.email);
   $('.over').text(data.game.over);
   //board.openGame(data.game);
+
 };
 
 module.exports = {
