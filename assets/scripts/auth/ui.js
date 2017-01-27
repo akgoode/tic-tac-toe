@@ -17,16 +17,19 @@ const signInSuccess = (data) => {
   $('#showGames').removeClass("hide");
   $('#game-id').removeClass("hide");
   $('#getGame').removeClass("hide");
+  $('#signInModal').modal("hide");
 };
 
 const signUpSuccess = () => {
   $('#statusbar').text('Please Sign in!');
   $('.signUpForm').val('');
+  $('#signUpModal').modal("hide");
 };
 
 const changePasswordSuccess = () => {
   $('#statusbar').text('Password successfully changed!');
   $('.changePasswordForm').val('');
+  $('#changePasswordModal').modal("hide");
 };
 
 const signOutSuccess = () => {
