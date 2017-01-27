@@ -4,7 +4,7 @@ const player = require('../game/player.js');
 const board = require('../game/board.js');
 const gameStore = require('../gameStore.js');
 
-const createSuccess = function () {
+const createSuccess = function (data) {
   if(gameStore.game !== {}){
     board.endGame();
   }
@@ -13,8 +13,7 @@ const createSuccess = function () {
 };
 
 const showGamesSuccess = function (data) {
-  console.table(data);
-  console.log(board.getUserWins(data));
+  $('.getwins').text(board.getUserWins(data));
 };
 
 const showGameSuccess = function (data) {

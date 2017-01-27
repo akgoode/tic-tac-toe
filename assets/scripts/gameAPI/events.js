@@ -10,6 +10,7 @@ const onNewGame = function (event) {
   gameAPI.createGame()
     .then((response) => {
       gameStore.game = response.game;
+      $('.gameid').text(gameStore.game.id + '');
       return gameStore.game;
     })
     .then(ui.createSuccess)

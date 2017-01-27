@@ -6,7 +6,6 @@ const gameAPI = require('../gameAPI/api.js');
 // constructor:  Creates a board from the string passed in by the server
 
 const Board = function (board) {
-  console.log(board);
   this.id = board.id;
   this.spaces = board.cells;
   this.turn = 0;
@@ -70,7 +69,7 @@ const makeMove = function (event) {
 // An invalid move will be in a spot that already has an X or an O
 
 Board.prototype.isValidMove = function (move) {
-  if (this.getSpace(move) !== "") {
+  if (this.over || this.getSpace(move) !== "") {
     return false;
   }
 
