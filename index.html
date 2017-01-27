@@ -12,14 +12,70 @@
     <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Tic Tac Toe</h1>
-    </header>
-    <div class="sidebar">
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signUpModal">
-        Click to Sign Up!
-      </button>
-      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="container">
+      <div class="row top-line">
+        <div class="title col-xs-12">
+          <h1>Tic Tac Toe</h1>
+          <button type="button" class="btn" data-toggle="modal" data-target="#signUpModal" id="userSignUp">
+            Click to Sign Up!
+          </button>
+        </div>
+      </div>
+      <div class="row game-space">
+        <div class="col-xs-12">
+          <div class="board" id="gameboard"></div>
+        </div>
+      </div>
+      <div class="row status-space">
+        <div class="col-xs-12">
+          <div class="status">
+            <p id="statusbar">Sign up or sign in!</p>
+          </div>
+        </div>
+      </div>
+      <div class="row user-center">
+        <div class="col-xs-6">
+          <div class="api-buttons">
+            <button type="button" id="userSignIn" class="btn" data-toggle="modal" data-target="#signInModal">
+              Click to Sign In!
+            </button>
+            <button type="button" class="btn hide" data-toggle="modal" data-target="#changePasswordModal" id="userChangePassword">
+              Change password!
+            </button>
+            <input class="btn hide" type="submit" name="submit" value="Sign Out" id="userSignOut">
+            <button type="button" class="btn hide" id="userSignOut">
+              Sign Out!
+            </button>
+
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="game-api">
+            <button type="button" id="creategame" class="btn btn-success hide">
+              Create game!
+            </button>
+            <button type="button" id="showGames" class="btn hide">
+              Show all games!
+            </button>
+            <form id="showGame">
+              <div class="form-group">
+                <input type="text" class="hide" name="games[id]" id="game-id" placeholder="Game ID Here">
+              </div>
+              <button type="submit" id="getGame" class="btn hide">Get Game</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="row search-results">
+        <ul>
+          <li>Player: <span class="gameid"></span></li>
+          <li>Game States:<span class="gamecells"></span></li>
+          <li>Player email:<span class="player"></span></li>
+          <li>Is the game over? <span class="over"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal fade modal-center" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -49,13 +105,7 @@
           </div>
         </div>
       </div>
-
-      <button type="button" id="userSignIn" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#signInModal">
-        Click to Sign In!
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade modal-center" id="signInModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -74,7 +124,7 @@
                     Password
                       <input class="signInForm" type="password" name="credentials[password]">
                   </label>
-                  <input type="submit" id="signInSubmit" name="submit" value="Sign In!">
+                  <input type="submit" id="signInSubmit" class="close" name="submit" value="Sign In!">
                 </fieldset>
               </form>
             </div>
@@ -82,12 +132,7 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary btn-lg hide" data-toggle="modal" data-target="#changePasswordModal" id="userChangePassword">
-        Change password!
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade modal-center" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -113,29 +158,5 @@
           </div>
         </div>
       </div>
-
-      <form id="sign-out">
-        <fieldset>
-          <input class="btn btn-primary btn-lg hide" type="submit" name="submit" value="Sign Out" id="userSignOut">
-        </fieldset>
-      </form>
-    </div>
-    <div class="board" id="gameboard">
-    </div>
-    <div class="status">
-      <p id="statusbar">Sign up or sign in!</p>
-    </div>
-    <button type="button" id="creategame" class="btn">
-      Create game!
-    </button>
-    <button type="button" id="showGames" class="btn">
-      Show all games!
-    </button>
-    <form id="showGame">
-      <div class="form-group">
-        <input type="text" name="games[id]" id="game-id" placeholder="Game ID Here">
-      </div>
-      <button type="submit" class="btn btn-default">Get Game</button>
-    </form>
   </body>
 </html>

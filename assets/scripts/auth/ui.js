@@ -6,13 +6,17 @@ const signInSuccess = (data) => {
   if (data) {
     console.log(data);
   }
-  $('#signInSubmit').hide();
-  $('#userSignIn').hide();
+  $('#signInSubmit').addClass("hide");
+  $('#userSignIn').addClass("hide");
   $('#userChangePassword').removeClass("hide");
   $('#userSignOut').removeClass("hide");
   $('#statusbar').text('Begin New Game!');
   //player.playerInit();
   $('.signInForm').val('');
+  $('#creategame').removeClass("hide");
+  $('#showGames').removeClass("hide");
+  $('#game-id').removeClass("hide");
+  $('#getGame').removeClass("hide");
 };
 
 const signUpSuccess = () => {
@@ -26,13 +30,16 @@ const changePasswordSuccess = () => {
 };
 
 const signOutSuccess = () => {
-  $('#userSignIn').show();
+  $('#userSignIn').removeClass("hide");
   $('#userChangePassword').addClass("hide");
   $('#userSignOut').addClass("hide");
   $('#statusbar').text('Successfully logged out!');
-  $('#signInSubmit').show();
+  $('#signInSubmit').removeClass("hide");
+  $('#creategame').addClass("hide");
+  $('#showGames').addClass("hide");
+  $('#game-id').addClass("hide");
+  $('#getGame').addClass("hide");
   board.endGame();
-
 };
 
 const failure = (error) => {

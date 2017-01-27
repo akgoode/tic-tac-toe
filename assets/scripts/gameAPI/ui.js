@@ -18,6 +18,11 @@ const showGamesSuccess = function (data) {
 
 const showGameSuccess = function (data) {
   console.log(data);
+  console.log(data.game.id);
+  $('.gameid').text(data.game.id + '');
+  $('.gamecells').text(data.game.cells);
+  $('.player').text(data.game.player_x.email);
+  $('.over').text(data.game.over);
   //board.openGame(data.game);
 };
 
