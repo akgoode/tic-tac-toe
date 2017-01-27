@@ -4,9 +4,10 @@ const board = require('../game/board.js');
 const gameStore = require('../gameStore.js');
 
 const createSuccess = function () {
-  if(gameStore.game !== {}){
+  if (gameStore.game !== {}) {
     board.endGame();
   }
+
   board.boardInit();
 };
 
@@ -19,8 +20,6 @@ const showGameSuccess = function (data) {
   $('.gamecells').text(data.game.cells);
   $('.player').text(data.game.player_x.email);
   $('.over').text(data.game.over);
-  //board.openGame(data.game);
-
 };
 
 const failure = () => {

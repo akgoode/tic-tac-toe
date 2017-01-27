@@ -15,8 +15,6 @@ const onNewGame = function (event) {
     .then(ui.createSuccess)
     .catch(ui.failure)
     ;
-  //console.log(newGame.responseJSON.game + '');
-  //console.log(newGame.responseJSON.game);
 };
 
 const onShowGames = function (event) {
@@ -29,7 +27,6 @@ const onShowGames = function (event) {
 
 const onShowGame = function (event) {
   event.preventDefault();
-  //let id = getFormFields(event.target);
   let id = parseInt($('#game-id').val());
   gameAPI.showGame(id)
     .then(ui.showGameSuccess)

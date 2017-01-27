@@ -8,7 +8,7 @@ const showGames = function () {
     url: config.apiOrigin + '/games',
     method: 'GET',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
   });
 };
@@ -18,7 +18,7 @@ const showGame = function (id) {
     url: config.apiOrigin + '/games/' + id,
     method: 'GET',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
   });
 };
@@ -28,7 +28,7 @@ const createGame = function () {
     url: config.apiOrigin + '/games',
     method: 'POST',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
   });
 };
@@ -38,7 +38,7 @@ const update = function (move, board) {
     url: config.apiOrigin + '/games/' + board.id,
     method: 'PATCH',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
     data: {
       "game": {
@@ -47,7 +47,7 @@ const update = function (move, board) {
           "value": board.nextPiece(),
         },
         "over": board.over,
-      }
+      },
     },
   });
 };
@@ -57,7 +57,7 @@ const watch = function (id) {
     url: config.apiOrigin + '/games/' + id + '/watch',
     method: 'GET',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
   });
 };

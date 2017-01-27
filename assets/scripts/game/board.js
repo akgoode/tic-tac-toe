@@ -9,11 +9,12 @@ const Board = function (board) {
   this.id = board.id;
   this.spaces = board.cells;
   this.turn = 0;
-  for(let i = 0; i < this.spaces.length; i++) {
-    if(this.spaces[i] === 'x' || this.spaces[i] === 'o') {
+  for (let i = 0; i < this.spaces.length; i++) {
+    if (this.spaces[i] === 'x' || this.spaces[i] === 'o') {
       this.turn++;
     }
   }
+
   this.player_x = board.player_x;
   this.player_0 = board.player_o || null;
   this.over = board.over;
@@ -37,7 +38,7 @@ Board.prototype.paintBoard = function (move) {
 
 const clearBoard = function () {
   $('.space').remove();
-  $('#statusbar').text("");
+  $('#statusbar').text('');
 };
 
 // Attempts to place a game piece in a designated spot on the board
@@ -47,17 +48,19 @@ const makeMove = function (event) {
   let move = parseInt(event.target.id);
   if (this.isValidMove(move)) {
     this.turn++;
-    $('#statusbar').text('Turn ' + this.turn + ': Player ' + this.nextPiece() + ' made move ' + move);
+    let p = this.nextPiece();
+    $('#statusbar').text('Turn ' + this.turn + ': Player ' + p + ' made move ' + move);
     this.spaces[move] = this.nextPiece();
     this.paintBoard(move);
     if (this.win()) {
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
-      $('#newgame').removeClass("hide");
+      $('#newgame').removeClass('hide');
       this.over = true;
     } else if (this.turn === 9) {
       $('#statusbar').text('The game is a tie!');
       this.over = true;
     }
+
     gameAPI.update(move, this);
   } else {
     $('#statusbar').text('That is not a valid move!');
@@ -69,7 +72,7 @@ const makeMove = function (event) {
 // An invalid move will be in a spot that already has an X or an O
 
 Board.prototype.isValidMove = function (move) {
-  if (this.over || this.getSpace(move) !== "") {
+  if (this.over || this.getSpace(move) !== '') {
     return false;
   }
 
@@ -110,6 +113,7 @@ const createBoard = function (board1, gameboard) {
     const bindMakeMove = makeMove.bind(board1);
     $('#' + i).on('click', bindMakeMove);
   }
+
   const bindClearBoard = clearBoard.bind(board1);
   $('#newgame').on('click', bindClearBoard);
 };
@@ -134,24 +138,27 @@ function endGame() {
   $('.space').remove();
 }
 
-function getUserWins (data) {
+function getUserWins(data) {
   let games = data.games;
   let winCount = 0;
   for (let i = 0; i < games.length; i++) {
     let game = new Board(games[i]);
     let numX = 0;
     let numO = 0;
-    for(let j = 0; j < game.spaces.length; j++) {
-      if(game.spaces[j] === 'x') {
+    for (let j = 0; j < game.spaces.length; j++) {
+      if (game.spaces[j] === 'x') {
         numX++;
       } else if (game.spaces[j] === 'o') {
         numO++;
       }
+
     }
+
     if (game.over && game.win() && numX > numO) {
       winCount++;
     }
   }
+
   return winCount;
 }
 
