@@ -3,7 +3,6 @@
 const gameAPI = require('./api.js');
 const gameStore = require('../gameStore.js');
 const ui = require('./ui.js');
-const getFormFields = require('../../../lib/get-form-fields.js');
 
 const onNewGame = function (event) {
   event.preventDefault();
@@ -14,6 +13,7 @@ const onNewGame = function (event) {
       return gameStore.game;
     })
     .then(ui.createSuccess)
+    .catch(ui.failure)
     ;
   //console.log(newGame.responseJSON.game + '');
   //console.log(newGame.responseJSON.game);
@@ -23,6 +23,7 @@ const onShowGames = function (event) {
   event.preventDefault();
   gameAPI.showGames()
     .then(ui.showGamesSuccess)
+    .catch(ui.failure)
     ;
 };
 
@@ -32,6 +33,7 @@ const onShowGame = function (event) {
   let id = parseInt($('#game-id').val());
   gameAPI.showGame(id)
     .then(ui.showGameSuccess)
+    .catch(ui.failure)
     ;
 };
 

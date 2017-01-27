@@ -2,10 +2,7 @@
 
 const board = require('../game/board.js');
 
-const signInSuccess = (data) => {
-  if (data) {
-    console.log(data);
-  }
+const signInSuccess = () => {
   $('#signInSubmit').addClass("hide");
   $('#userSignIn').addClass("hide");
   $('#userChangePassword').removeClass("hide");
@@ -45,8 +42,8 @@ const signOutSuccess = () => {
   board.endGame();
 };
 
-const failure = (error) => {
-  console.error(error);
+const failure = () => {
+  $('#statusbar').text('There was an error. Please try again.');
 };
 
 module.exports = {

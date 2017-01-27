@@ -4,12 +4,11 @@ const player = require('../game/player.js');
 const board = require('../game/board.js');
 const gameStore = require('../gameStore.js');
 
-const createSuccess = function (data) {
+const createSuccess = function () {
   if(gameStore.game !== {}){
     board.endGame();
   }
-  player.playerInit();
-  console.log('Success!');
+  board.boardInit();
 };
 
 const showGamesSuccess = function (data) {
@@ -17,8 +16,6 @@ const showGamesSuccess = function (data) {
 };
 
 const showGameSuccess = function (data) {
-  console.log(data);
-  console.log(data.game.id);
   $('.gameid').text(data.game.id + '');
   $('.gamecells').text(data.game.cells);
   $('.player').text(data.game.player_x.email);
@@ -27,8 +24,13 @@ const showGameSuccess = function (data) {
 
 };
 
+const failure = () => {
+  $('#statusbar').text('There was an error. Please try again.');
+};
+
 module.exports = {
   createSuccess,
   showGamesSuccess,
   showGameSuccess,
+  failure,
 };

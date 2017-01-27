@@ -103,14 +103,6 @@ Board.prototype.isDiagonalWin = function (piece) {
   return win1 || win2;
 };
 
-// Prints out a board to the console
-
-Board.prototype.printBoard = function () {
-  for (let i = 0; i < 9; i += 3) {
-    console.log(this.spaces[i + 0] + ' ' + this.spaces[i + 1] + ' ' + this.spaces[i + 2]);
-  }
-};
-
 const createBoard = function (board1, gameboard) {
   for (let i = 0; i < board1.spaces.length; i++) {
     gameboard.append('<div class="space" id="' + i + '"></div>');

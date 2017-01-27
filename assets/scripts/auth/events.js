@@ -24,9 +24,6 @@ const onSignIn = function (event) {
       return store.user;
     })
     .then(ui.signInSuccess)
-    .then(() => {
-      console.log(store);
-    })
     .catch(ui.failure)
     ;
 };
