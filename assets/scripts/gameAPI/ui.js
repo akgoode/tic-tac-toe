@@ -1,6 +1,5 @@
 'use strict';
 
-const player = require('../game/player.js');
 const board = require('../game/board.js');
 const gameStore = require('../gameStore.js');
 
