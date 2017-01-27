@@ -4,6 +4,9 @@ By Andrew Goode
 
 http://akgoode.github.io/tic-tac-toe
 
+User Experience:
+Upon page load, the user is presented with two options: Sign Up or Sign In.  The game will not work without being signed in so the first visit to the site the user must sign up and then sign in to play the game.  Upon sign-in, the user will have some more options in their control panel.  They can create a game, change their password, sign out, and 
+
 
 1/21/17:  Started creating the game logic.  By the end of the day I was able to mimic a game in node by hardcoding in test moves.  The game could tell when there was a winning condition in the game board.  I had horizontal, diagonal, and vertical win cases completed by today.
 
@@ -14,3 +17,8 @@ http://akgoode.github.io/tic-tac-toe
 1/26/17:  Started working on API interactions.  In the morning I got all of the signup/signin/changepassword/signout functionality working and displayed in the browser.  In the afternoon I worked on implementing the interaction with the game server to create games and update them on the server.
 
 1/27/17:  Got all the API functions working.  Modified the UI to be functional if the user resizes the page and made space for the output of all the ajax requests.  Fine-tuned some UI elements and behavior depending on which buttons were clicked.  Removed comments and console.log statements and excess bloat on the files.  Fixed all grunt nag errors.
+
+Important things I learned:
+- The importance of controlling 'this' in writing javascript and custom objects with prototype methods.  I learned about function.bind() to control this and I think that will be very helpful for me in the future.
+- The importance of using the browser template and the different ways of linking code files together.
+- How to parse the responses of ajax requests and use those in functions.  Also how to track the arguments through some ajax functions and the eventhandlers that call them.

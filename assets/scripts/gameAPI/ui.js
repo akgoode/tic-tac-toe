@@ -26,9 +26,14 @@ const failure = () => {
   $('#statusbar').text('There was an error. Please try again.');
 };
 
+const showFailure = () => {
+  $('#statusbar').text('There are no games to return!');
+};
+
 module.exports = {
   createSuccess,
   showGamesSuccess,
   showGameSuccess,
   failure,
+  showFailure,
 };

@@ -30,7 +30,7 @@ const onShowGame = function (event) {
   let id = parseInt($('#game-id').val());
   gameAPI.showGame(id)
     .then(ui.showGameSuccess)
-    .catch(ui.failure)
+    .catch(ui.showFailure)
     ;
 };
 
