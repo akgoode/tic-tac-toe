@@ -2,6 +2,7 @@
 
 const board = require('../game/board.js');
 const gameStore = require('../gameStore.js');
+const store = require('../store.js');
 
 const createSuccess = function () {
   if (gameStore.game !== {}) {
@@ -14,6 +15,7 @@ const createSuccess = function () {
 
 const showGamesSuccess = function (data) {
   $('#getwins').text(board.getUserWins(data));
+  $('#statusbar').text(store.user.email + ' has ' + board.getUserWins(data) + ' wins');
 };
 
 const showGameSuccess = function (data) {
@@ -25,7 +27,11 @@ const showGameSuccess = function (data) {
 
 const unfinishedSuccess = function (data) {
   let games = board.getUnfinishedGamesIds(data);
-  $('#unfinished').text(games);
+  if (games.length > 0) {
+    $('#unfinished').text(games);
+  } else {
+    $('#statusbar').text('No unfinished games!');
+  }
 };
 
 const failure = () => {
@@ -33,7 +39,7 @@ const failure = () => {
 };
 
 const showFailure = () => {
-  $('#statusbar').text('There are no games to return!');
+  $('#statusbar').text('Please enter a valid game!');
 };
 
 module.exports = {
