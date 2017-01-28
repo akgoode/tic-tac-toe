@@ -16,9 +16,14 @@
       <div class="row top-line">
         <div class="title col-xs-12">
           <h1>Tic Tac Toe</h1>
-          <button type="button" class="btn" data-toggle="modal" data-target="#signUpModal" id="userSignUp">
-            Click to Sign Up!
-          </button>
+          <div class="headerbuttons">
+            <button type="button" class="btn" data-toggle="modal" data-target="#signUpModal" id="userSignUp">
+              Sign Up!
+            </button>
+            <button type="button" id="userSignIn" class="btn" data-toggle="modal" data-target="#signInModal">
+              Sign In!
+            </button>
+          </div>
         </div>
       </div>
       <div class="row game-space">
@@ -36,14 +41,10 @@
       <div class="row user-center">
         <div class="col-sm-6">
           <div class="api-buttons">
-            <button type="button" id="userSignIn" class="btn" data-toggle="modal" data-target="#signInModal">
-              Sign In!
-            </button>
             <button type="button" id="creategame" class="btn btn-success hide">
               New game!
             </button>
             <input class="btn btn-danger hide" type="submit" name="submit" value="Sign Out" id="userSignOut">
-
           </div>
         </div>
         <div class="col-sm-6">
