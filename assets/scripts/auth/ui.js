@@ -47,6 +47,7 @@ const signOutSuccess = () => {
   board.endGame();
   $('#statusbar').text('Successfully logged out!');
   $('.searchdata').text('');
+  $('#gameboard').css("border-color", '#92fd75');
 };
 
 const failure = () => {
