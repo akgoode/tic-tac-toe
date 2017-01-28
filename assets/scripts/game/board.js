@@ -36,11 +36,6 @@ Board.prototype.paintBoard = function (move) {
   $('#text' + move).text(this.nextPiece());
 };
 
-const clearBoard = function () {
-  $('.space').remove();
-  $('#statusbar').text('');
-};
-
 // Attempts to place a game piece in a designated spot on the board
 
 const makeMove = function (event) {
@@ -54,7 +49,6 @@ const makeMove = function (event) {
     this.paintBoard(move);
     if (this.win()) {
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
-      $('#newgame').removeClass('hide');
       this.over = true;
     } else if (this.turn === 9) {
       $('#statusbar').text('The game is a tie!');
@@ -114,28 +108,27 @@ const createBoard = function (board1, gameboard) {
     $('#' + i).on('click', bindMakeMove);
   }
 
-  const bindClearBoard = clearBoard.bind(board1);
-  $('#newgame').on('click', bindClearBoard);
 };
 
 function boardInit() {
   let $board = $('#gameboard');
   const board1 = new Board(gameStore.game);
-
+  $('#statusbar').text('Begin new game!');
   createBoard(board1, $board);
 }
 
+function endGame() {
+  $('.space').remove();
+  $('#statusbar').text('');
+}
+
 function openGame(board) {
-  clearBoard();
+  endGame();
   let $board = $('#gameboard');
   createBoard(board, $board);
   for (let i = 0; i < board.spaces.length; i++) {
     $('#text' + i).text(board.spaces[i]);
   }
-}
-
-function endGame() {
-  $('.space').remove();
 }
 
 function getUserWins(data) {
@@ -162,9 +155,20 @@ function getUserWins(data) {
   return winCount;
 }
 
+function getUnfinishedGamesIds(data) {
+  let games = [];
+  for (let i = 0; i < data.games.length; i++) {
+    if (!data.games[i].over) {
+      games.push(data.games[i].id);
+    }
+  }
+  return games;
+}
+
 module.exports = {
   boardInit,
   endGame,
   openGame,
   getUserWins,
+  getUnfinishedGamesIds,
 };

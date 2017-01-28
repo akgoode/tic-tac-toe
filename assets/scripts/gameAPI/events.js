@@ -34,10 +34,19 @@ const onShowGame = function (event) {
     ;
 };
 
+const onUnfinishedGames = function (event) {
+  event.preventDefault();
+  gameAPI.showGames()
+    .then(ui.unfinishedSuccess)
+    .catch(ui.failure)
+    ;
+};
+
 const addHandlers = function () {
   $('#creategame').on('click', onNewGame);
   $('#showGames').on('click', onShowGames);
   $('#showGame').on('submit', onShowGame);
+  $('#showUnfinished').on('click', onUnfinishedGames);
 };
 
 module.exports = {

@@ -42,10 +42,7 @@
             <button type="button" class="btn hide" data-toggle="modal" data-target="#changePasswordModal" id="userChangePassword">
               Change password!
             </button>
-            <input class="btn hide" type="submit" name="submit" value="Sign Out" id="userSignOut">
-            <button type="button" class="btn hide" id="userSignOut">
-              Sign Out!
-            </button>
+            <input class="btn btn-danger hide" type="submit" name="submit" value="Sign Out" id="userSignOut">
 
           </div>
         </div>
@@ -63,16 +60,18 @@
               </div>
               <button type="submit" id="getGame" class="btn hide">Get Game</button>
             </form>
+            <button type="button" id="showUnfinished" class="btn hide">Get unfinished games!</button>
           </div>
         </div>
       </div>
       <div class="row search-results">
         <ul>
-          <li>Game ID: <span class="gameid"></span></li>
-          <li>Game States:<span class="gamecells"></span></li>
-          <li>Player email:<span class="player"></span></li>
-          <li>Is the game over? <span class="over"></span></li>
-          <li>How many wins does the user have? <span class="getwins"></span></li>
+          <li>Game ID: <span class="searchdata" id="gameid"></span></li>
+          <li>Game States:<span class="searchdata" id="gamecells"></span></li>
+          <li>Player email:<span class="searchdata" id="player"></span></li>
+          <li>Is the game over? <span class="searchdata" id="over"></span></li>
+          <li>How many wins does the user have? <span class="searchdata" id="getwins"></span></li>
+          <li>Unfinished Games: <span class="searchdata" id="unfinished"></span></li>
         </ul>
       </div>
     </div>

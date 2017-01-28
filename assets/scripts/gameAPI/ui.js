@@ -12,14 +12,19 @@ const createSuccess = function () {
 };
 
 const showGamesSuccess = function (data) {
-  $('.getwins').text(board.getUserWins(data));
+  $('#getwins').text(board.getUserWins(data));
 };
 
 const showGameSuccess = function (data) {
-  $('.gameid').text(data.game.id + '');
-  $('.gamecells').text(data.game.cells);
-  $('.player').text(data.game.player_x.email);
-  $('.over').text(data.game.over);
+  $('#gameid').text(data.game.id + '');
+  $('#gamecells').text(data.game.cells);
+  $('#player').text(data.game.player_x.email);
+  $('#over').text(data.game.over);
+};
+
+const unfinishedSuccess = function (data) {
+  let games = board.getUnfinishedGamesIds(data);
+  $('#unfinished').text(games);
 };
 
 const failure = () => {
@@ -34,6 +39,7 @@ module.exports = {
   createSuccess,
   showGamesSuccess,
   showGameSuccess,
+  unfinishedSuccess,
   failure,
   showFailure,
 };

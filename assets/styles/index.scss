@@ -40,6 +40,7 @@ div {
   height: 518px;
   margin: 50px;
   width: 518px;
+  background-color: $black;
 
   @media(max-width: 400px) {
     border: 1px solid $black;
@@ -58,6 +59,7 @@ div {
   margin: 5px;
   position: center;
   width: 160px;
+  background-color: $white;
 
   @media(max-width: 400px) {
     border: 1px solid $black;

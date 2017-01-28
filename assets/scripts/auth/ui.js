@@ -1,23 +1,29 @@
 'use strict';
 
 const board = require('../game/board.js');
+const store = require('../store.js');
 
 const signInSuccess = () => {
   $('#signInSubmit').addClass('hide');
   $('#userSignIn').addClass('hide');
   $('#userChangePassword').removeClass('hide');
   $('#userSignOut').removeClass('hide');
-  $('#statusbar').text('Begin New Game!');
+  $('#statusbar').text('Click "Create Game" to play!');
   $('.signInForm').val('');
   $('#creategame').removeClass('hide');
   $('#showGames').removeClass('hide');
   $('#game-id').removeClass('hide');
   $('#getGame').removeClass('hide');
   $('#signInModal').modal('hide');
+  $('#showUnfinished').removeClass('hide');
 };
 
 const signUpSuccess = () => {
-  $('#statusbar').text('Please Sign in!');
+  if(store.user === {}) {
+    $('#statusbar').text('Please Sign in!');
+  } else {
+    $('#statusbar').text('Welcome! Another user is signed in!');
+  }
   $('.signUpForm').val('');
   $('#signUpModal').modal('hide');
 };
@@ -32,13 +38,15 @@ const signOutSuccess = () => {
   $('#userSignIn').removeClass('hide');
   $('#userChangePassword').addClass('hide');
   $('#userSignOut').addClass('hide');
-  $('#statusbar').text('Successfully logged out!');
   $('#signInSubmit').removeClass('hide');
   $('#creategame').addClass('hide');
   $('#showGames').addClass('hide');
   $('#game-id').addClass('hide');
   $('#getGame').addClass('hide');
+  $('#showUnfinished').addClass('hide');
   board.endGame();
+  $('#statusbar').text('Successfully logged out!');
+  $('.searchdata').text('');
 };
 
 const failure = () => {
