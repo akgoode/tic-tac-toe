@@ -26,6 +26,12 @@ $pressstart2p: 'Press Start 2P', sans-serif;
   height: 300px;
   padding: 10px;
   width: 650px;
+
+  @media (max-width: 500px) {
+    height: 350px;
+    width: 350px;
+  }
+
 }
 
 .mdl-btn {
@@ -38,6 +44,17 @@ div {
   h1 {
     font-size: 6em;
     text-align: center;
+
+    @media(max-width: 500px) {
+      font-size: 1em;
+    }
+  }
+}
+
+.title > h1 {
+  @media(max-width: 500px) {
+    font-size: 2em;
+    text-align: left;
   }
 }
 
@@ -50,6 +67,10 @@ div {
   height: 250px;
   margin: 20px 50px;
   width: 550px;
+
+  @media(max-width: 500px) {
+    margin-left: 5px;
+  }
 }
 
 .board {
@@ -59,7 +80,7 @@ div {
   margin: 50px;
   width: 518px;
 
-  @media(max-width: 400px) {
+  @media(max-width: 500px) {
     border: 1px solid $techgreen;
     height: 300px;
     margin: 10px;
@@ -78,15 +99,16 @@ div {
   position: center;
   width: 160px;
 
-  @media(max-width: 400px) {
+  h1 {
+    font-size: 12;
+  }
+
+  @media(max-width: 500px) {
     border: 1px solid $techgreen;
+    font-size: 3em;
     height: 87px;
     margin: 5px;
     width: 87px;
-
-    h1 {
-      font-size: 12;
-    }
   }
 }
 
@@ -98,6 +120,13 @@ div {
   p {
     font-size: 1.5em;
     text-align: center;
+  }
+
+  @media(max-width: 500px) {
+    height: 30px;
+    margin: 10px 20px;
+    text-align: left;
+    width: 300px;
   }
 }
 
@@ -121,6 +150,11 @@ div {
   left: 200px;
   position: fixed;
   top: 100px;
+
+  @media (max-width: 500px) {
+    left: 10px;
+    top: 10px;
+  }
 }
 
 .search-results {
@@ -128,6 +162,10 @@ div {
   height: 200px;
   margin: 20px 50px;
   width: 518px;
+
+  @media (max-width: 500px) {
+    margin-left: 2px;
+  }
 }
 
 #game-id {
