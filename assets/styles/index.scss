@@ -82,7 +82,6 @@ div {
   border: 5px solid $techgreen;
   border-radius: 10px;
   float: left;
-  font-size: 30;
   height: 160px;
   left: 0;
   margin: 5px;
@@ -91,7 +90,7 @@ div {
   width: 160px;
 
   h1 {
-    font-size: 12;
+    font-size: 6em;
   }
 
   @media(max-width: 500px) {
