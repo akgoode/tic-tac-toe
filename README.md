@@ -19,6 +19,8 @@ When they create a new game, the user's account will be assigned to player_x in 
 
 1/27/17:  Got all the API functions working.  Modified the UI to be functional if the user resizes the page and made space for the output of all the ajax requests.  Fine-tuned some UI elements and behavior depending on which buttons were clicked.  Removed comments and console.log statements and excess bloat on the files.  Fixed all grunt nag errors.
 
+1/28/17:  Worked on styling the page to look like an old school 8 bit monochromatic game.  Added "get unfinished games" functionality.  
+
 Important things I learned:
 - The importance of controlling 'this' in writing javascript and custom objects with prototype methods.  I learned about function.bind() to control this and I think that will be very helpful for me in the future.
 - The importance of using the browser template and the different ways of linking code files together.

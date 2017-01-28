@@ -8,7 +8,7 @@ const signInSuccess = () => {
   $('#userSignIn').addClass('hide');
   $('#userChangePassword').removeClass('hide');
   $('#userSignOut').removeClass('hide');
-  $('#statusbar').text('Click "Create Game" to play!');
+  $('#statusbar').text('Click "New Game" to play!');
   $('.signInForm').val('');
   $('#creategame').removeClass('hide');
   $('#showGames').removeClass('hide');
