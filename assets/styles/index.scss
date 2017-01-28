@@ -95,13 +95,12 @@ div {
 
   @media(max-width: 500px) {
     border: 1px solid $techgreen;
-    font-size: 3em;
     height: 87px;
     margin: 5px;
     width: 87px;
 
     h1 {
-      font-size: 1em;
+      font-size: 3em;
     }
   }
 }
