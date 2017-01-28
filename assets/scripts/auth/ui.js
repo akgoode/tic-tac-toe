@@ -18,10 +18,10 @@ const signInSuccess = () => {
   $('#showUnfinished').removeClass('hide');
 };
 
-const signUpSuccess = () => {
+const signUpSuccess = (data) => {
   if(store.user === {}) {
     $('#statusbar').text('Please Sign in!');
-  } else {
+  } else if (store.user !== data.user){
     $('#statusbar').text('Welcome! Another user is signed in!');
   }
   $('.signUpForm').val('');
