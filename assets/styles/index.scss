@@ -1,14 +1,35 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Meddon|Press+Start+2P');
 
 $background-color: #4e4e4e;
 $font-color: #dfdfdf;
 $white: #fff;
 $modal-font-color: #000;
 $black: #000;
+$lightorange: #fccc9e;
+$techgreen: #92fd75;
+$meddon: 'Meddon', sans-serif;
+$pressstart2p: 'Press Start 2P', sans-serif;
+
+* {
+  background-color: $black;
+  color: $techgreen;
+  font-family: $pressstart2p;
+}
 
 .modal {
+  background-color: $black;
+  border: 1px solid $techgreen;
+  border-radius: 10px;
   color: $modal-font-color;
+  height: 300px;
+  padding: 10px;
+  width: 650px;
+}
+
+.mdl-btn {
+  color: $techgreen;
 }
 
 div {
@@ -24,26 +45,22 @@ div {
   width: 100%;
 }
 
-.top-line {
-  border: 1px solid $black;
-}
-
 .user-center {
-  border: 1px solid $black;
+  font-size: 12px;
   height: 250px;
   margin: 20px 50px;
-  width: 518px;
+  width: 550px;
 }
 
 .board {
-  border: 2px solid $black;
+  border: 3px solid $techgreen;
+  border-radius: 10px;
   height: 518px;
   margin: 50px;
   width: 518px;
-  background-color: $black;
 
   @media(max-width: 400px) {
-    border: 1px solid $black;
+    border: 1px solid $techgreen;
     height: 300px;
     margin: 10px;
     width: 300px;
@@ -51,7 +68,8 @@ div {
 }
 
 .space {
-  border: 2px solid $black;
+  border: 5px solid $techgreen;
+  border-radius: 10px;
   float: left;
   font-size: 30;
   height: 160px;
@@ -59,10 +77,9 @@ div {
   margin: 5px;
   position: center;
   width: 160px;
-  background-color: $white;
 
   @media(max-width: 400px) {
-    border: 1px solid $black;
+    border: 1px solid $techgreen;
     height: 87px;
     margin: 5px;
     width: 87px;
@@ -74,20 +91,21 @@ div {
 }
 
 .status {
-  border: 1px solid $black;
-  height: 40px;
+  height: 60px;
   margin: 20px 50px;
   width: 518px;
 
   p {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
   }
 }
 
 .btn {
+  border: 2px solid $techgreen;
   float: left;
-  margin: 8px;
+  font-size: 8;
+  margin: 5px;
 }
 
 #signUpUser {
@@ -106,8 +124,17 @@ div {
 }
 
 .search-results {
-  border: 1px solid $black;
+  font-size: 8;
   height: 200px;
   margin: 20px 50px;
   width: 518px;
+}
+
+#game-id {
+  margin: 10px 4px 0;
+  margin-bottom: 0;
+}
+
+#getGame {
+  margin-top: 0;
 }

@@ -7,7 +7,8 @@ const createSuccess = function () {
   if (gameStore.game !== {}) {
     board.endGame();
   }
-
+  $('#gameid').text(gameStore.game.id);
+  $('#gameboard').css("border-color", "black");
   board.boardInit();
 };
 
