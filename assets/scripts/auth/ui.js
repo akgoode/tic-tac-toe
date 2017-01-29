@@ -16,6 +16,7 @@ const signInSuccess = () => {
   $('#getGame').removeClass('hide');
   $('#signInModal').modal('hide');
   $('#showUnfinished').removeClass('hide');
+  $('.search-results').removeClass('hide');
 };
 
 const signUpSuccess = (data) => {
@@ -48,6 +49,8 @@ const signOutSuccess = () => {
   $('#statusbar').text('Successfully logged out!');
   $('.searchdata').text('');
   $('#gameboard').css("border-color", '#92fd75');
+  $('.search-results').addClass('hide');
+
 };
 
 const failure = () => {
