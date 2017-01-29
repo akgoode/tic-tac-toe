@@ -34,6 +34,7 @@ Board.prototype.getSpace = function (index) {
 
 Board.prototype.paintBoard = function (move) {
   $('#text' + move).text(this.nextPiece());
+  $('#' + move).css('border-color', '#000');
 };
 
 // Attempts to place a game piece in a designated spot on the board
