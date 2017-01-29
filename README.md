@@ -21,6 +21,8 @@ When they create a new game, the user's account will be assigned to player_x in 
 
 1/28/17:  Worked on styling the page to look like an old school 8 bit monochromatic game.  Added "get unfinished games" functionality.  Also added formatting so that the game would be easily playable on mobile.
 
+1/29/17: I worked on the README and made some tweaks to the border behavior of game spaces and the gameboard.
+
 Important things I learned:
 - The importance of controlling 'this' in writing javascript and custom objects with prototype methods.  I learned about function.bind() to control this and I think that will be very helpful for me in the future.
 - The importance of using the browser template and the different ways of linking code files together.
