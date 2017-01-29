@@ -51,9 +51,11 @@ const makeMove = function (event) {
     if (this.win()) {
       $('#statusbar').text('Player ' + this.nextPiece() + ' wins!');
       $('.space').css('border-color', '#000');
+      $('#gameboard').css('border-color', '#92fd75');
       this.over = true;
     } else if (this.turn === 9) {
       $('#statusbar').text('The game is a tie!');
+      $('#gameboard').css('border-color', '#92fd75');
       this.over = true;
     }
 
