@@ -19,12 +19,8 @@ const signInSuccess = () => {
   $('.search-results').removeClass('hide');
 };
 
-const signUpSuccess = (data) => {
-  if(store.user === {}) {
-    $('#statusbar').text('Please Sign in!');
-  } else if (store.user !== data.user){
-    $('#statusbar').text('Welcome! Another user is signed in!');
-  }
+const signUpSuccess = () => {
+  $('#statusbar').text('Thanks for signing up!');
   $('.signUpForm').val('');
   $('#signUpModal').modal('hide');
 };
